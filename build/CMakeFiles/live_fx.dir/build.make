@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/louis/Dokumente/Programmieren/C++/ReadMic
+CMAKE_SOURCE_DIR = /home/louis/Dokumente/Programmieren/C++/live_fx
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/louis/Dokumente/Programmieren/C++/ReadMic/build
+CMAKE_BINARY_DIR = /home/louis/Dokumente/Programmieren/C++/live_fx/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/live_fx.dir/depend.make
@@ -70,32 +70,32 @@ include CMakeFiles/live_fx.dir/progress.make
 include CMakeFiles/live_fx.dir/flags.make
 
 CMakeFiles/live_fx.dir/src/main.cpp.o: CMakeFiles/live_fx.dir/flags.make
-CMakeFiles/live_fx.dir/src/main.cpp.o: /home/louis/Dokumente/Programmieren/C++/ReadMic/src/main.cpp
+CMakeFiles/live_fx.dir/src/main.cpp.o: /home/louis/Dokumente/Programmieren/C++/live_fx/src/main.cpp
 CMakeFiles/live_fx.dir/src/main.cpp.o: CMakeFiles/live_fx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/louis/Dokumente/Programmieren/C++/ReadMic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/live_fx.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/live_fx.dir/src/main.cpp.o -MF CMakeFiles/live_fx.dir/src/main.cpp.o.d -o CMakeFiles/live_fx.dir/src/main.cpp.o -c /home/louis/Dokumente/Programmieren/C++/ReadMic/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/louis/Dokumente/Programmieren/C++/live_fx/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/live_fx.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/live_fx.dir/src/main.cpp.o -MF CMakeFiles/live_fx.dir/src/main.cpp.o.d -o CMakeFiles/live_fx.dir/src/main.cpp.o -c /home/louis/Dokumente/Programmieren/C++/live_fx/src/main.cpp
 
 CMakeFiles/live_fx.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/live_fx.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Dokumente/Programmieren/C++/ReadMic/src/main.cpp > CMakeFiles/live_fx.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Dokumente/Programmieren/C++/live_fx/src/main.cpp > CMakeFiles/live_fx.dir/src/main.cpp.i
 
 CMakeFiles/live_fx.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/live_fx.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Dokumente/Programmieren/C++/ReadMic/src/main.cpp -o CMakeFiles/live_fx.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Dokumente/Programmieren/C++/live_fx/src/main.cpp -o CMakeFiles/live_fx.dir/src/main.cpp.s
 
 CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o: CMakeFiles/live_fx.dir/flags.make
-CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o: /home/louis/Dokumente/Programmieren/C++/ReadMic/src/AudioSystem.cpp
+CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o: /home/louis/Dokumente/Programmieren/C++/live_fx/src/AudioSystem.cpp
 CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o: CMakeFiles/live_fx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/louis/Dokumente/Programmieren/C++/ReadMic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o -MF CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o.d -o CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o -c /home/louis/Dokumente/Programmieren/C++/ReadMic/src/AudioSystem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/louis/Dokumente/Programmieren/C++/live_fx/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o -MF CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o.d -o CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o -c /home/louis/Dokumente/Programmieren/C++/live_fx/src/AudioSystem.cpp
 
 CMakeFiles/live_fx.dir/src/AudioSystem.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/live_fx.dir/src/AudioSystem.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Dokumente/Programmieren/C++/ReadMic/src/AudioSystem.cpp > CMakeFiles/live_fx.dir/src/AudioSystem.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Dokumente/Programmieren/C++/live_fx/src/AudioSystem.cpp > CMakeFiles/live_fx.dir/src/AudioSystem.cpp.i
 
 CMakeFiles/live_fx.dir/src/AudioSystem.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/live_fx.dir/src/AudioSystem.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Dokumente/Programmieren/C++/ReadMic/src/AudioSystem.cpp -o CMakeFiles/live_fx.dir/src/AudioSystem.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Dokumente/Programmieren/C++/live_fx/src/AudioSystem.cpp -o CMakeFiles/live_fx.dir/src/AudioSystem.cpp.s
 
 # Object files for target live_fx
 live_fx_OBJECTS = \
@@ -109,7 +109,7 @@ live_fx: CMakeFiles/live_fx.dir/src/main.cpp.o
 live_fx: CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o
 live_fx: CMakeFiles/live_fx.dir/build.make
 live_fx: CMakeFiles/live_fx.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/louis/Dokumente/Programmieren/C++/ReadMic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable live_fx"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/louis/Dokumente/Programmieren/C++/live_fx/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable live_fx"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/live_fx.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -121,6 +121,6 @@ CMakeFiles/live_fx.dir/clean:
 .PHONY : CMakeFiles/live_fx.dir/clean
 
 CMakeFiles/live_fx.dir/depend:
-	cd /home/louis/Dokumente/Programmieren/C++/ReadMic/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/louis/Dokumente/Programmieren/C++/ReadMic /home/louis/Dokumente/Programmieren/C++/ReadMic /home/louis/Dokumente/Programmieren/C++/ReadMic/build /home/louis/Dokumente/Programmieren/C++/ReadMic/build /home/louis/Dokumente/Programmieren/C++/ReadMic/build/CMakeFiles/live_fx.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/louis/Dokumente/Programmieren/C++/live_fx/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/louis/Dokumente/Programmieren/C++/live_fx /home/louis/Dokumente/Programmieren/C++/live_fx /home/louis/Dokumente/Programmieren/C++/live_fx/build /home/louis/Dokumente/Programmieren/C++/live_fx/build /home/louis/Dokumente/Programmieren/C++/live_fx/build/CMakeFiles/live_fx.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/live_fx.dir/depend
 

@@ -1,5 +1,5 @@
 CMakeFiles/live_fx.dir/src/main.cpp.o: \
- /home/louis/Dokumente/Programmieren/C++/ReadMic/src/main.cpp \
+ /home/louis/Dokumente/Programmieren/C++/live_fx/src/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/12/iostream \
  /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
@@ -127,5 +127,5 @@ CMakeFiles/live_fx.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/basic_ios.tcc \
  /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
  /usr/include/c++/12/bits/istream.tcc \
- /home/louis/Dokumente/Programmieren/C++/ReadMic/src/../lib/AudioSystem.hpp \
+ /home/louis/Dokumente/Programmieren/C++/live_fx/src/../lib/AudioSystem.hpp \
  /usr/include/portaudio.h

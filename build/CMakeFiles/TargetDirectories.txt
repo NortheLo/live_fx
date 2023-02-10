@@ -1,3 +1,3 @@
-/home/louis/Dokumente/Programmieren/C++/ReadMic/build/CMakeFiles/live_fx.dir
-/home/louis/Dokumente/Programmieren/C++/ReadMic/build/CMakeFiles/edit_cache.dir
-/home/louis/Dokumente/Programmieren/C++/ReadMic/build/CMakeFiles/rebuild_cache.dir
+/home/louis/Dokumente/Programmieren/C++/live_fx/build/CMakeFiles/live_fx.dir
+/home/louis/Dokumente/Programmieren/C++/live_fx/build/CMakeFiles/edit_cache.dir
+/home/louis/Dokumente/Programmieren/C++/live_fx/build/CMakeFiles/rebuild_cache.dir

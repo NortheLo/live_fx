@@ -16,8 +16,15 @@ class AudioSystem
         char *sampleBlock = nullptr;
         int numBytes;
         int numChannels = 1;
+        
         void printErr(PaError err);
         void getDevice();
+        static int streamCallback(const void *inputBuffer,
+                          void *outputBuffer,
+                          unsigned long framesPerBuffer,
+                          const PaStreamCallbackTimeInfo *timeInfo,
+                          PaStreamCallbackFlags statusFlags,
+                          void *userData);
 
     public:
         AudioSystem();

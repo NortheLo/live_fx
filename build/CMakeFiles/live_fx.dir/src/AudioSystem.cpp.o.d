@@ -1,7 +1,7 @@
 CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o: \
- /home/louis/Dokumente/Programmieren/C++/ReadMic/src/AudioSystem.cpp \
+ /home/louis/Dokumente/Programmieren/C++/live_fx/src/AudioSystem.cpp \
  /usr/include/stdc-predef.h \
- /home/louis/Dokumente/Programmieren/C++/ReadMic/src/../lib/AudioSystem.hpp \
+ /home/louis/Dokumente/Programmieren/C++/live_fx/src/../lib/AudioSystem.hpp \
  /usr/include/portaudio.h /usr/include/c++/12/iostream \
  /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \

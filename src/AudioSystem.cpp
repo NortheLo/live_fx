@@ -43,15 +43,14 @@ void AudioSystem::getDevice() {
 }
 
 int AudioSystem::openAudio() {
-    err = Pa_OpenStream(
-            &stream,
-            &inputParameters,
-            &outputParameters,
-            SAMPLE_RATE,
-            FRAMES_PER_BUFFER,
-            paClipOff,      /* we won't output out of range samples so don't bother clipping them */
-            NULL, /* no callback, use blocking API */
-            NULL ); /* no callback, so no callback userData */
+    err = Pa_OpenStream(&stream,
+                        &inputParameters,
+                        &outputParameters,
+                        SAMPLE_RATE,
+                        FRAMES_PER_BUFFER,
+                        paClipOff,      /* we won't output out of range samples so don't bother clipping them */
+                        nullptr, /* no callback, use blocking API */
+                        nullptr); /* no callback, so no callback userData */
 
     if (err != paNoError && Pa_StartStream(stream) != paNoError) {
         printErr(err);
@@ -66,3 +65,13 @@ void AudioSystem::closeAudio() {
     Pa_CloseStream(stream);
     Pa_Terminate();
 }
+
+int AudioSystem::streamCallback(const void *inputBuffer,
+                          void *outputBuffer,
+                          unsigned long framesPerBuffer,
+                          const PaStreamCallbackTimeInfo *timeInfo,
+                          PaStreamCallbackFlags statusFlags,
+                          void *userData) {
+
+        return paContinue;
+    }
