@@ -1,0 +1,4 @@
+project(LIVE_FX)
+set(CMAKE_CXX_STANDARD 17)
+add_executable(live_fx src/main.cpp src/AudioSystem.cpp)
+target_link_libraries(live_fx -lportaudio)
