@@ -129,53 +129,35 @@ live_fx/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/build
 .PHONY : live_fx/fast
 
-src/AudioSystem.o: src/AudioSystem.cpp.o
+# target to build an object file
+src/AudioSystem.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/AudioSystem.o
 .PHONY : src/AudioSystem.o
 
-# target to build an object file
-src/AudioSystem.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o
-.PHONY : src/AudioSystem.cpp.o
-
-src/AudioSystem.i: src/AudioSystem.cpp.i
+# target to preprocess a source file
+src/AudioSystem.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/AudioSystem.i
 .PHONY : src/AudioSystem.i
 
-# target to preprocess a source file
-src/AudioSystem.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/AudioSystem.cpp.i
-.PHONY : src/AudioSystem.cpp.i
-
-src/AudioSystem.s: src/AudioSystem.cpp.s
+# target to generate assembly for a file
+src/AudioSystem.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/AudioSystem.s
 .PHONY : src/AudioSystem.s
 
-# target to generate assembly for a file
-src/AudioSystem.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/AudioSystem.cpp.s
-.PHONY : src/AudioSystem.cpp.s
-
-src/main.o: src/main.cpp.o
+# target to build an object file
+src/main.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/main.o
 .PHONY : src/main.o
 
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
+# target to preprocess a source file
+src/main.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/main.i
 .PHONY : src/main.i
 
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
-
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/main.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/live_fx.dir/build.make CMakeFiles/live_fx.dir/src/main.s
+.PHONY : src/main.s
 
 # Help Target
 help:

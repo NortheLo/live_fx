@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/louis/Dokumente/Programmieren/C++/live_fx/src/AudioSystem.cpp" "CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o" "gcc" "CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o.d"
-  "/home/louis/Dokumente/Programmieren/C++/live_fx/src/main.cpp" "CMakeFiles/live_fx.dir/src/main.cpp.o" "gcc" "CMakeFiles/live_fx.dir/src/main.cpp.o.d"
+  "/home/louis/Dokumente/Programmieren/C++/live_fx/src/AudioSystem.cpp" "CMakeFiles/live_fx.dir/src/AudioSystem.o" "gcc" "CMakeFiles/live_fx.dir/src/AudioSystem.o.d"
+  "/home/louis/Dokumente/Programmieren/C++/live_fx/src/main.cpp" "CMakeFiles/live_fx.dir/src/main.o" "gcc" "CMakeFiles/live_fx.dir/src/main.o.d"
   )
 
 # Targets to which this target links.

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o"
-  "CMakeFiles/live_fx.dir/src/AudioSystem.cpp.o.d"
-  "CMakeFiles/live_fx.dir/src/main.cpp.o"
-  "CMakeFiles/live_fx.dir/src/main.cpp.o.d"
+  "CMakeFiles/live_fx.dir/src/AudioSystem.o"
+  "CMakeFiles/live_fx.dir/src/AudioSystem.o.d"
+  "CMakeFiles/live_fx.dir/src/main.o"
+  "CMakeFiles/live_fx.dir/src/main.o.d"
   "live_fx"
   "live_fx.pdb"
 )
