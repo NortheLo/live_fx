@@ -13,18 +13,20 @@ class AudioSystem
         PaError err;
         const PaDeviceInfo* inputInfo;
         const PaDeviceInfo* outputInfo;
-        char *sampleBlock = nullptr;
+        char* sampleBlock = nullptr;
         int numBytes;
         int numChannels = 1;
-        
+        float* inData = nullptr;
+        float* outData = nullptr;
+
         void printErr(PaError err);
         void getDevice();
-        static int streamCallback(const void *inputBuffer,
-                          void *outputBuffer,
-                          unsigned long framesPerBuffer,
-                          const PaStreamCallbackTimeInfo *timeInfo,
-                          PaStreamCallbackFlags statusFlags,
-                          void *userData);
+        int streamCallback(const void *inputBuffer,
+                            void *outputBuffer,
+                            unsigned long framesPerBuffer,
+                            const PaStreamCallbackTimeInfo *timeInfo,
+                            PaStreamCallbackFlags statusFlags,
+                            void *userData);
 
     public:
         AudioSystem();
@@ -32,5 +34,7 @@ class AudioSystem
         
         int openAudio();
         void closeAudio();
+        float* getInData();
+        float* getOutData();
 };
 

@@ -48,9 +48,9 @@ int AudioSystem::openAudio() {
                         &outputParameters,
                         SAMPLE_RATE,
                         FRAMES_PER_BUFFER,
-                        paClipOff,      /* we won't output out of range samples so don't bother clipping them */
-                        nullptr, /* no callback, use blocking API */
-                        nullptr); /* no callback, so no callback userData */
+                        paClipOff,              /* we won't output out of range samples so don't bother clipping them */
+                        nullptr,                /* no callback, use blocking API */
+                        nullptr);               /* no callback, so no callback userData */
 
     if (err != paNoError && Pa_StartStream(stream) != paNoError) {
         printErr(err);
@@ -67,11 +67,23 @@ void AudioSystem::closeAudio() {
 }
 
 int AudioSystem::streamCallback(const void *inputBuffer,
-                          void *outputBuffer,
-                          unsigned long framesPerBuffer,
-                          const PaStreamCallbackTimeInfo *timeInfo,
-                          PaStreamCallbackFlags statusFlags,
-                          void *userData) {
+                                void *outputBuffer,
+                                unsigned long framesPerBuffer,
+                                const PaStreamCallbackTimeInfo *timeInfo,
+                                PaStreamCallbackFlags statusFlags,
+                                void *userData) {
+                        
+    /* Needs its implementation */
+    inData = (float*) inputBuffer;
+    outData = (float*) outputBuffer;
 
-        return paContinue;
-    }
+    return paContinue;
+}
+
+float* AudioSystem::getInData() {
+    return inData;
+}
+
+float* AudioSystem::getOutData() {
+    return outData;
+}
