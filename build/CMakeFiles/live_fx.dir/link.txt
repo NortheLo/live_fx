@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/live_fx.dir/src/main.o CMakeFiles/live_fx.dir/src/AudioSystem.o -o live_fx  -lportaudio 
