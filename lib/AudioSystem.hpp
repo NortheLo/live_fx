@@ -5,6 +5,13 @@
 #define FRAMES_PER_BUFFER   512
 #define PA_SAMPLE_TYPE paFloat32
 
+typedef struct
+{
+    int          frameIndex;  /* Index into sample array. */
+    int          maxFrameIndex;
+    float      *recordedSamples;
+} audioBuffer;
+
 class AudioSystem
 {
     private:
@@ -16,8 +23,7 @@ class AudioSystem
         char* sampleBlock = nullptr;
         int numBytes;
         int numChannels = 1;
-        float* inData = nullptr;
-        float* outData = nullptr;
+        audioBuffer *data;
 
         void printErr(PaError err);
         void setDevices(int devID);
@@ -29,15 +35,14 @@ class AudioSystem
                             const PaStreamCallbackTimeInfo *timeInfo,
                             PaStreamCallbackFlags statusFlags,
                             void *userData) {
-            
-            return ((AudioSystem*)userData)->audioCallback(inputBuffer, outputBuffer, framesPerBuffer, timeInfo, statusFlags);
+            return ((AudioSystem*)userData)->audioCallback(inputBuffer, outputBuffer, framesPerBuffer, timeInfo, statusFlags, userData);
         }
 
         int audioCallback(const void *inputBuffer,
                                 void *outputBuffer,
                                 unsigned long framesPerBuffer,
                                 const PaStreamCallbackTimeInfo *timeInfo,
-                                PaStreamCallbackFlags statusFlags);
+                                PaStreamCallbackFlags statusFlags, void *userData);
 
     public:
         int counter = 0; //debugging variable; pls remove after fix
@@ -46,8 +51,5 @@ class AudioSystem
         
         int openAudio();
         void closeAudio();
-        float* getInData();
-        float* getOutData();
-        
 };
 
