@@ -21,7 +21,7 @@ class AudioSystem
 
         void printErr(PaError err);
         void setDevices(int devID);
-        void printDev();
+        int printDev();
         void selDev();
         static int streamCallback(const void *inputBuffer,
                             void *outputBuffer,
@@ -29,6 +29,7 @@ class AudioSystem
                             const PaStreamCallbackTimeInfo *timeInfo,
                             PaStreamCallbackFlags statusFlags,
                             void *userData) {
+            
             return ((AudioSystem*)userData)->audioCallback(inputBuffer, outputBuffer, framesPerBuffer, timeInfo, statusFlags);
         }
 
@@ -39,6 +40,7 @@ class AudioSystem
                                 PaStreamCallbackFlags statusFlags);
 
     public:
+        int counter = 0; //debugging variable; pls remove after fix
         AudioSystem();
         ~AudioSystem();
         

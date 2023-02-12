@@ -17,11 +17,11 @@ AudioSystem::~AudioSystem() {
 }
 
 void AudioSystem::printErr(PaError err) {
-    std::cerr << "ERROR: %s", Pa_GetErrorText(err);
+    std::cerr << "ERROR: " << Pa_GetErrorText(err) << "\n";
     closeAudio();
 }
 
-void AudioSystem::printDev() {
+int AudioSystem::printDev() {
     int devices = Pa_GetDeviceCount();
 
     for (int i = 0; i != devices; ++i) 
@@ -29,13 +29,18 @@ void AudioSystem::printDev() {
         auto * info = Pa_GetDeviceInfo(i);
         std::cout << "ID: " << i << " " << info->name << std::endl;
     } 
+    return devices;
 }
 
 void AudioSystem::selDev() {
     int devID;
-    printDev();
-    std::cout << "Select device by ID number (0 will use system defaults): ";
-    std::cin >> devID;
+    int devNum = printDev();
+   
+    do {
+        std::cout << "Select device by ID number (0 will use system defaults): ";
+        std::cin >> devID; 
+    } while (devID > devNum);
+    
     setDevices(devID);
 }
 
@@ -77,7 +82,7 @@ int AudioSystem::openAudio() {
                         SAMPLE_RATE,
                         FRAMES_PER_BUFFER,
                         paClipOff,              /* we won't output out of range samples so don't bother clipping them */
-                        &AudioSystem::streamCallback,                /* no callback, use blocking API */
+                        &AudioSystem::streamCallback,                
                         nullptr);               /* no callback, so no callback userData */
 
     if (err != paNoError && Pa_StartStream(stream) != paNoError) {
@@ -92,6 +97,7 @@ void AudioSystem::closeAudio() {
     Pa_AbortStream(stream);
     Pa_CloseStream(stream);
     Pa_Terminate();
+    exit(EXIT_FAILURE);
 }
 
 int AudioSystem::audioCallback(const void *inputBuffer,
@@ -103,7 +109,8 @@ int AudioSystem::audioCallback(const void *inputBuffer,
     /* Needs its implementation */
     inData = (float*) inputBuffer;
     outData = (float*) outputBuffer;
-    std::cout << inData << "\n";
+
+    counter++;
 
     return paContinue;
 }
