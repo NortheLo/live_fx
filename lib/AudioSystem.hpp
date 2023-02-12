@@ -20,13 +20,23 @@ class AudioSystem
         float* outData = nullptr;
 
         void printErr(PaError err);
-        void getDevice();
-        int streamCallback(const void *inputBuffer,
+        void setDevices(int devID);
+        void printDev();
+        void selDev();
+        static int streamCallback(const void *inputBuffer,
                             void *outputBuffer,
                             unsigned long framesPerBuffer,
                             const PaStreamCallbackTimeInfo *timeInfo,
                             PaStreamCallbackFlags statusFlags,
-                            void *userData);
+                            void *userData) {
+            return ((AudioSystem*)userData)->audioCallback(inputBuffer, outputBuffer, framesPerBuffer, timeInfo, statusFlags);
+        }
+
+        int audioCallback(const void *inputBuffer,
+                                void *outputBuffer,
+                                unsigned long framesPerBuffer,
+                                const PaStreamCallbackTimeInfo *timeInfo,
+                                PaStreamCallbackFlags statusFlags);
 
     public:
         AudioSystem();
@@ -36,5 +46,6 @@ class AudioSystem
         void closeAudio();
         float* getInData();
         float* getOutData();
+        
 };
 

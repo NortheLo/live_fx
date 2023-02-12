@@ -8,7 +8,8 @@ AudioSystem::AudioSystem() {
     if (err != paNoError) {
         printErr(err);
     }
-    getDevice();
+
+    selDev();
 }
 
 AudioSystem::~AudioSystem() {
@@ -20,16 +21,43 @@ void AudioSystem::printErr(PaError err) {
     closeAudio();
 }
 
-void AudioSystem::getDevice() {
+void AudioSystem::printDev() {
+    int devices = Pa_GetDeviceCount();
 
-    inputParameters.device = Pa_GetDefaultInputDevice(); /* default input device */
+    for (int i = 0; i != devices; ++i) 
+    {
+        auto * info = Pa_GetDeviceInfo(i);
+        std::cout << "ID: " << i << " " << info->name << std::endl;
+    } 
+}
+
+void AudioSystem::selDev() {
+    int devID;
+    printDev();
+    std::cout << "Select device by ID number (0 will use system defaults): ";
+    std::cin >> devID;
+    setDevices(devID);
+}
+
+void AudioSystem::setDevices(int devID) {
+
+    if (devID == 0)
+    {
+        inputParameters.device = Pa_GetDefaultInputDevice(); /* default input device */
+        outputParameters.device = Pa_GetDefaultOutputDevice(); /* default output device */
+
+    }
+    else {
+        inputParameters.device = devID;
+        outputParameters.device = devID;
+    }
+
     inputInfo = Pa_GetDeviceInfo( inputParameters.device );
     inputParameters.channelCount = numChannels;
     inputParameters.sampleFormat = PA_SAMPLE_TYPE;
     inputParameters.suggestedLatency = inputInfo->defaultLowInputLatency ;
     inputParameters.hostApiSpecificStreamInfo = NULL;
 
-    outputParameters.device = Pa_GetDefaultOutputDevice(); /* default output device */
     outputInfo = Pa_GetDeviceInfo( outputParameters.device );
     outputParameters.channelCount = numChannels;
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
@@ -49,7 +77,7 @@ int AudioSystem::openAudio() {
                         SAMPLE_RATE,
                         FRAMES_PER_BUFFER,
                         paClipOff,              /* we won't output out of range samples so don't bother clipping them */
-                        nullptr,                /* no callback, use blocking API */
+                        &AudioSystem::streamCallback,                /* no callback, use blocking API */
                         nullptr);               /* no callback, so no callback userData */
 
     if (err != paNoError && Pa_StartStream(stream) != paNoError) {
@@ -66,16 +94,16 @@ void AudioSystem::closeAudio() {
     Pa_Terminate();
 }
 
-int AudioSystem::streamCallback(const void *inputBuffer,
+int AudioSystem::audioCallback(const void *inputBuffer,
                                 void *outputBuffer,
                                 unsigned long framesPerBuffer,
                                 const PaStreamCallbackTimeInfo *timeInfo,
-                                PaStreamCallbackFlags statusFlags,
-                                void *userData) {
+                                PaStreamCallbackFlags statusFlags) {
                         
     /* Needs its implementation */
     inData = (float*) inputBuffer;
     outData = (float*) outputBuffer;
+    std::cout << inData << "\n";
 
     return paContinue;
 }
