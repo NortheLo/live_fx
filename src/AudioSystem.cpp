@@ -3,8 +3,10 @@
 #include <iostream>
 #include <string>
 
+#define SIGQUIT -1
+
 AudioSystem::AudioSystem() {
-    err = Pa_Initialize();
+    PaError err = Pa_Initialize();
     if (err != paNoError) {
         printErr(err);
     }
@@ -13,12 +15,12 @@ AudioSystem::AudioSystem() {
 }
 
 AudioSystem::~AudioSystem() {
-    closeAudio();
+    closeAudio(0);
 }
 
 void AudioSystem::printErr(PaError err) {
     std::cerr << "ERROR: " << Pa_GetErrorText(err) << "\n";
-    closeAudio();
+    closeAudio(SIGQUIT);
 }
 
 int AudioSystem::printDev() {
@@ -76,7 +78,7 @@ void AudioSystem::setDevices(int devID) {
 }
 
 int AudioSystem::openAudio() {
-    err = Pa_OpenStream(&stream,
+    PaError errOpen = Pa_OpenStream(&stream,
                         &inputParameters,
                         &outputParameters,
                         SAMPLE_RATE,
@@ -84,20 +86,28 @@ int AudioSystem::openAudio() {
                         paClipOff,              /* we won't output out of range samples so don't bother clipping them */
                         &AudioSystem::streamCallback,                
                         &data);               /* no callback, so no callback userData */
+    if (errOpen != paNoError) {
+        printErr(errOpen);
+        return -1;
+    }
 
-    if (err != paNoError && Pa_StartStream(stream) != paNoError) {
-        printErr(err);
+    PaError errStart = Pa_StartStream(stream);
+
+    if (errStart != paNoError) {
+        printErr(errStart);
         return -1;
     }
 
     return 0;
 }
 
-void AudioSystem::closeAudio() {
+void AudioSystem::closeAudio(int quit) {
     Pa_AbortStream(stream);
     Pa_CloseStream(stream);
     Pa_Terminate();
-    exit(EXIT_FAILURE);
+    if (quit == SIGQUIT) {
+        exit(EXIT_FAILURE);
+    }
 }
 
 int AudioSystem::audioCallback(const void *inputBuffer,
@@ -105,10 +115,9 @@ int AudioSystem::audioCallback(const void *inputBuffer,
                                 unsigned long framesPerBuffer,
                                 const PaStreamCallbackTimeInfo *timeInfo,
                                 PaStreamCallbackFlags statusFlags, void *userData) {
-    counter++; // used for checking if the callback gets executed at all               
     /* Needs its implementation */
     data = (audioBuffer*) userData;
-
+    inData = (float*) inputBuffer;
 
     return paContinue;
 }
