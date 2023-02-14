@@ -117,7 +117,15 @@ int AudioSystem::audioCallback(const void *inputBuffer,
                                 PaStreamCallbackFlags statusFlags, void *userData) {
     /* Needs its implementation */
     data = (audioBuffer*) userData;
-    inData = (float*) inputBuffer;
+    float* in = (float*) inputBuffer;
+
+    if(in != NULL) {
+        for (size_t i = 0; i < framesPerBuffer; i++)
+        {
+            inData[i] = *in++;
+        }
+        
+    }
 
     return paContinue;
 }

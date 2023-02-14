@@ -10,7 +10,7 @@ int main() {
         // if ready flag
         float* buf = audio.getBuffer();
         for (int i = 0; i < FRAMES_PER_BUFFER; i++)
-            std::cout << (buf + i) << "\n";
+            std::cout << i << " " << buf[i] << "\n";
         
     }
 
