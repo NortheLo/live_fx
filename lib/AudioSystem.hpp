@@ -21,8 +21,7 @@ class AudioSystem
         const PaDeviceInfo* outputInfo;
         int numChannels = 1;
         audioBuffer *data;
-
-        float* inData = nullptr;   
+        float inData[FRAMES_PER_BUFFER];   
 
         void printErr(PaError err);
         void setDevices(int devID);
