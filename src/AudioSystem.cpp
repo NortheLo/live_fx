@@ -116,17 +116,32 @@ int AudioSystem::audioCallback(const void *inputBuffer,
                                 const PaStreamCallbackTimeInfo *timeInfo,
                                 PaStreamCallbackFlags statusFlags, void *userData) {
     /* Needs its implementation */
+    std::unique_lock<std::mutex> ul(mu);
     data = (audioBuffer*) userData;
     float* in = (float*) inputBuffer;
+    rdy.store(true, std::memory_order_release);    
+    ul.unlock();
 
-    if(in != NULL) {
-        for (size_t i = 0; i < framesPerBuffer; i++)
-        {
-            inData[i] = *in++;
-        }
-        
-    }
 
     return paContinue;
 }
 
+float* AudioSystem::getBuffer() {
+    float backBuffer[FRAMES_PER_BUFFER];
+    if(rdy.load(std::memory_order_acquire) == true) {
+        std::unique_lock<std::mutex> ul(mu);
+        std::copy(std::begin(inData), std::end(inData), std::begin(backBuffer));
+        rdy.store(false, std::memory_order_release);    
+        ul.unlock();
+    }
+
+    cnt++;
+    std::cout << cnt << " ";
+    //for (size_t i = 0; i < FRAMES_PER_BUFFER; i++) {
+    //    std::cout << backBuffer[i];
+    //}
+
+
+    float* j = nullptr;
+    return j; 
+}

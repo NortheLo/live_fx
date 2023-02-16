@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream> // for debugging
+#include <mutex>
+#include <atomic>
+#include <algorithm>
 #include "portaudio.h"
 
 #define SAMPLE_RATE       48000
@@ -22,6 +25,9 @@ class AudioSystem
         int numChannels = 1;
         audioBuffer *data;
         float inData[FRAMES_PER_BUFFER];   
+        std::mutex mu;
+        std::atomic<bool> rdy = false;
+        long cnt = 0;
 
         void printErr(PaError err);
         void setDevices(int devID);
@@ -44,7 +50,7 @@ class AudioSystem
              
         int openAudio();
         void closeAudio(int quit);
-        float* getBuffer() { return inData; }
+        float* getBuffer();
 
 };
 
