@@ -127,10 +127,9 @@ int AudioSystem::audioCallback(const void *inputBuffer,
 }
 
 float* AudioSystem::getBuffer() {
-    float backBuffer[FRAMES_PER_BUFFER];
     if(rdy.load(std::memory_order_acquire) == true) {
         std::unique_lock<std::mutex> ul(mu);
-        std::copy(std::begin(inData), std::end(inData), std::begin(backBuffer));
+        std::copy(std::begin(frontBuffer), std::end(frontBuffer), std::begin(backBuffer));
         rdy.store(false, std::memory_order_release);    
         ul.unlock();
     }
