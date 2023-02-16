@@ -9,9 +9,7 @@ int main() {
     while(Pa_IsStreamActive(audio.stream)) {
         // if ready flag
         float* buf = audio.getBuffer();
-        for (int i = 0; i < FRAMES_PER_BUFFER; i++) {
-            //std::cout << i << " " << buf[i] << "\n";
-        }
+
     }
 
     std::cout << "End\n";

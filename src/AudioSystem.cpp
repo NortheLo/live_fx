@@ -134,14 +134,5 @@ float* AudioSystem::getBuffer() {
         rdy.store(false, std::memory_order_release);    
         ul.unlock();
     }
-
-    cnt++;
-    std::cout << cnt << " ";
-    //for (size_t i = 0; i < FRAMES_PER_BUFFER; i++) {
-    //    std::cout << backBuffer[i];
-    //}
-
-
-    float* j = nullptr;
-    return j; 
+    return backBuffer; 
 }
