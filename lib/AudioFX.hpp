@@ -6,7 +6,8 @@ class AudioFX
         
     public:
         virtual ~AudioFX();
-
+        
+        virtual float* applyEffect();
         
 };
 
