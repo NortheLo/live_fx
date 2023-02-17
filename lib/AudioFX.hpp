@@ -1,5 +1,7 @@
 #pragma once
 
+/* Abstract class for audio effects */
+
 class AudioFX
 {
     private:
@@ -7,7 +9,7 @@ class AudioFX
     public:
         virtual ~AudioFX();
         
-        virtual float* applyEffect();
+        virtual float* applyEffect() = 0;
         
 };
 
