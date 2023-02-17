@@ -9,6 +9,8 @@ void LowPass::setAngularFreq(float frq) {
 }
 
 float* LowPass::applyEffect() {
+    
+
     float* i = nullptr;
     return i;
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <math.h>
+
 /* Abstract class for audio effects */
 
 class AudioFX

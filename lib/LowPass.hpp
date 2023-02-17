@@ -2,16 +2,24 @@
 
 #include "AudioFX.hpp"
 
-#define ORDER 5
+#define ORDER 3
+
+typedef struct {
+    float a0 = 1;
+    float a1 = 2;
+    float a2 = 2;
+    float a3 = 1;
+} butterCoeff;
 
 class LowPass : public AudioFX
 {
     private:
+        int samplingFrequency = 48e3;
         float angularFreq = 0;
         float poles[ORDER] = {0};
 
     public:
-        LowPass(float freq) : angularFreq(freq) {} 
+        LowPass(float freq, int samplingFrq) : angularFreq(freq), samplingFrequency(samplingFrq) {} 
 
         ~LowPass();
 
@@ -21,7 +29,7 @@ class LowPass : public AudioFX
         float* getPoles() { return poles; }
         float getAngularFreq() { return angularFreq; }
 
-        float* applyEffect() override ;
+        float* applyEffect() override;
         
 };
 
