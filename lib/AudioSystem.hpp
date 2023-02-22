@@ -15,8 +15,9 @@ class AudioSystem
         const PaDeviceInfo* inputInfo;
         const PaDeviceInfo* outputInfo;
         int numChannels = 1;
-        /* Double buffering when reading the input data */ 
-        float frontBuffer[FRAMES_PER_BUFFER];  
+        /* Double buffering when reading the input data; backbuffer removed as it is (for now) not needed */ 
+        float inBuffer[FRAMES_PER_BUFFER];  
+        float outBuffer[FRAMES_PER_BUFFER];
         std::mutex mu;
         std::atomic<bool> rdy = false;
 
@@ -38,12 +39,10 @@ class AudioSystem
         AudioSystem();
         ~AudioSystem();
         PaStream *stream = nullptr;   
-        long cnt = 0;    
-        
+         
         int openAudio();
         void closeAudio(int quit);
-        void getBuffer();
-        void writeBuffer();
-
+        float* getBuffer();
+        void writeBuffer(float* data, int len);
 };
 

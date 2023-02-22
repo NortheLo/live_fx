@@ -115,33 +115,50 @@ int AudioSystem::audioCallback(const void *inputBuffer,
                                 unsigned long framesPerBuffer,
                                 const PaStreamCallbackTimeInfo *timeInfo,
                                 PaStreamCallbackFlags statusFlags) {
-    std::cout << "Callback\n";
     float* in = (float*) inputBuffer;
+    float* out = (float*) outputBuffer;
     std::unique_lock<std::mutex> ul(mu);
+    
+    /* For writing the data from the microphone */
+    for (size_t i = 0; i < framesPerBuffer; i++)
+    {
+        inBuffer[i] = *in++; 
+    }
+
+    /* For writng the outputs data*/
     
     for (size_t i = 0; i < framesPerBuffer; i++)
     {
-        inputBuffer[i] = *in++; 
+        *out++ = outBuffer[i];
     }
     
     rdy = true;    
     return paContinue;
 }
 
-void AudioSystem::getBuffer() {
-    //while (rdy == false);
-    
+float* AudioSystem::getBuffer() {
+    while (rdy == false);
+    std::unique_lock<std::mutex> ul(mu);
+
     for (size_t i = 0; i < FRAMES_PER_BUFFER; i++)
     {
-        std::cout << inputBuffer[i] << "    ";
+        std::cout << inBuffer[i] << "    ";
     } 
-    //cnt++;
     std::cout << "\n";
-    //while (rdy == false) {}
-    //std::unique_lock<std::mutex> ul(mu);
 
-    //rdy = false;
-    //ul.unlock();
-    //std::cout << "mm\n";
+    rdy = false;
 
+    return inBuffer;
+}
+
+void AudioSystem::writeBuffer(float* data, int len) {
+    if (len > FRAMES_PER_BUFFER)
+    {
+        return;
+    }
+    
+    for (size_t i = 0; i < len; i++)
+    {
+        outBuffer[i] = *data++;
+    }
 }
