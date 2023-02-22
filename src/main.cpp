@@ -1,17 +1,10 @@
 #include <iostream>
-#include <math.h>
-#include <unistd.h> // For UNIX sleep func
+#include <unistd.h> // For UNIX sleep function; deprectaded but could be useful for OpenBSD port
 #include "../lib/AudioSystem.hpp"
 
-int main() {
-    /* Test sin signal for output */
-    float testSignal[256];
-    for (size_t i = 0; i < 256; i++)
-    {
-        testSignal[i] = sin(M_PI * i / 256);
-        std::cout << testSignal[i] << " ";
-    }
-    
+#include "../lib/Window.hpp"
+
+int main(int argc, char *argv[]) {
     float* buf;
     
     AudioSystem audio = AudioSystem();

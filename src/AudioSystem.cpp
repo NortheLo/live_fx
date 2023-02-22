@@ -139,13 +139,6 @@ int AudioSystem::audioCallback(const void *inputBuffer,
 float* AudioSystem::getBuffer() {
     while (rdy == false);
     std::unique_lock<std::mutex> ul(mu);
-
-    for (size_t i = 0; i < FRAMES_PER_BUFFER; i++)
-    {
-        std::cout << inBuffer[i] << "    ";
-    } 
-    std::cout << "\n";
-
     rdy = false;
 
     return inBuffer;
