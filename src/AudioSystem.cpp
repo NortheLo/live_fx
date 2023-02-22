@@ -79,13 +79,13 @@ void AudioSystem::setDevices(int devID) {
 
 int AudioSystem::openAudio() {
     PaError errOpen = Pa_OpenStream(&stream,
-                        &inputParameters,
-                        &outputParameters,
-                        SAMPLE_RATE,
-                        FRAMES_PER_BUFFER,
-                        paClipOff,              /* we won't output out of range samples so don't bother clipping them */
-                        &AudioSystem::streamCallback,                
-                        &data);               /* no callback, so no callback userData */
+                                    &inputParameters,
+                                    &outputParameters,
+                                    SAMPLE_RATE,
+                                    FRAMES_PER_BUFFER,
+                                    paClipOff,              /* we won't output out of range samples so don't bother clipping them */
+                                    &AudioSystem::streamCallback,                
+                                    this);                /* Using 'this' for userData so we can cast to Sine* in paCallback method */
     if (errOpen != paNoError) {
         printErr(errOpen);
         return -1;
@@ -114,24 +114,34 @@ int AudioSystem::audioCallback(const void *inputBuffer,
                                 void *outputBuffer,
                                 unsigned long framesPerBuffer,
                                 const PaStreamCallbackTimeInfo *timeInfo,
-                                PaStreamCallbackFlags statusFlags, void *userData) {
-    /* Needs its implementation */
-    std::unique_lock<std::mutex> ul(mu);
-    data = (audioBuffer*) userData;
+                                PaStreamCallbackFlags statusFlags) {
+    std::cout << "Callback\n";
     float* in = (float*) inputBuffer;
-    rdy.store(true, std::memory_order_release);    
-    ul.unlock();
-
-
+    std::unique_lock<std::mutex> ul(mu);
+    
+    for (size_t i = 0; i < framesPerBuffer; i++)
+    {
+        inputBuffer[i] = *in++; 
+    }
+    
+    rdy = true;    
     return paContinue;
 }
 
-float* AudioSystem::getBuffer() {
-    if(rdy.load(std::memory_order_acquire) == true) {
-        std::unique_lock<std::mutex> ul(mu);
-        std::copy(std::begin(frontBuffer), std::end(frontBuffer), std::begin(backBuffer));
-        rdy.store(false, std::memory_order_release);    
-        ul.unlock();
-    }
-    return backBuffer; 
+void AudioSystem::getBuffer() {
+    //while (rdy == false);
+    
+    for (size_t i = 0; i < FRAMES_PER_BUFFER; i++)
+    {
+        std::cout << inputBuffer[i] << "    ";
+    } 
+    //cnt++;
+    std::cout << "\n";
+    //while (rdy == false) {}
+    //std::unique_lock<std::mutex> ul(mu);
+
+    //rdy = false;
+    //ul.unlock();
+    //std::cout << "mm\n";
+
 }

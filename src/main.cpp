@@ -7,9 +7,8 @@ int main() {
     audio.openAudio();
     
     while(Pa_IsStreamActive(audio.stream)) {
-        // if ready flag
-        float* buf = audio.getBuffer();
 
+        audio.getBuffer();
     }
 
     std::cout << "End\n";
