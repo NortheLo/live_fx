@@ -9,22 +9,20 @@
 int main(int argc, char *argv[]) {
     auto app = Gtk::Application::create("org.gtkmm.examples.base");
 
-    return app->make_window_and_run<MainWindow>(argc, argv);
-
-    /*
     float* buf;
-    
     AudioSystem audio = AudioSystem();
     audio.openAudio();
-    
+
+    app->make_window_and_run<MainWindow>(argc, argv);
+
+/*
     while(Pa_IsStreamActive(audio.stream)) {
 
         buf = audio.getBuffer();
         audio.writeBuffer(buf, 256);
         usleep(1); 
     }
-
+*/
     std::cout << "End\n";
     return EXIT_SUCCESS;
-    */
 }
