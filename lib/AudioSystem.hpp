@@ -22,7 +22,7 @@ class AudioSystem
         std::atomic<bool> rdy = false;
 
         void printErr(PaError err);
-        void setDevices(int devID);
+        void setDevices(int inID, int outID);
         int printDev();
         void selDev();
         static int streamCallback(const void *inputBuffer, void *outputBuffer,

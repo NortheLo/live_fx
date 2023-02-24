@@ -1,5 +1,5 @@
 # About  
-This project should be a simple program, which reads input from an input device like your soundcard and apply a audio filter and monitor it to a desired output. 
+This project should be a simple program, which reads input from an input device like your soundcard and apply an audio filter and monitor it to a desired output. 
 
 ## Build
 Step 1: Create build directory  ``mkdir build && cd build``  

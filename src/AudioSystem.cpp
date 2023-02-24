@@ -35,28 +35,30 @@ int AudioSystem::printDev() {
 }
 
 void AudioSystem::selDev() {
-    int devID;
+    int inID, outID;
     int devNum = printDev();
    
     do {
-        std::cout << "Select device by ID number (0 will use system defaults): ";
-        std::cin >> devID; 
-    } while (devID > devNum);
+        std::cout << "Select input-device by ID number (0 will use system defaults): ";
+        std::cin >> inID; 
+        std::cout << "Select outout-device by ID number (0 will use system defaults): ";
+        std::cin >> outID;         
+    } while (inID > devNum && outID > devNum);
     
-    setDevices(devID);
+    setDevices(inID, outID);
 }
 
-void AudioSystem::setDevices(int devID) {
+void AudioSystem::setDevices(int inID, int outID) {
 
-    if (devID == 0)
+    if (inID == 0 && outID == 0)
     {
         inputParameters.device = Pa_GetDefaultInputDevice(); /* default input device */
         outputParameters.device = Pa_GetDefaultOutputDevice(); /* default output device */
 
     }
     else {
-        inputParameters.device = devID;
-        outputParameters.device = devID;
+        inputParameters.device = inID;
+        outputParameters.device = outID;
     }
 
     inputInfo = Pa_GetDeviceInfo( inputParameters.device );
