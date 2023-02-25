@@ -11,7 +11,7 @@ class AudioFX
     public:
         virtual ~AudioFX();
         
-        virtual float* applyEffect() = 0;
+        virtual void applyEffect(float input, float &output) = 0;
         
 };
 

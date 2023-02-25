@@ -1,35 +1,30 @@
 #pragma once
 
 #include "AudioFX.hpp"
-
-#define ORDER 3
+#include <cmath>
 
 typedef struct {
-    float a0 = 1;
-    float a1 = 2;
-    float a2 = 2;
-    float a3 = 1;
-} butterCoeff;
+    float a0, a1, a2, a3, b1, b2, b3;
+} thirdButterLPTCoeff;
 
 class LowPass : public AudioFX
 {
     private:
-        int samplingFrequency = 48e3;
-        float angularFreq = 0;
-        float poles[ORDER] = {0};
+        float wc = 0.2f;
+        float K, norm;
+        thirdButterLPTCoeff *coeff;
+        float p0, p1, p2, z1, z2, z3;
 
     public:
-        LowPass(float freq, int samplingFrq) : angularFreq(freq), samplingFrequency(samplingFrq) {} 
+        LowPass(float wc) : wc(wc) {
+            setFreq(wc);
+        } 
 
         ~LowPass();
 
-        void setPoles(float pole[ORDER]);
-        void setAngularFreq(float frq);
+        void setFreq(float wc);
 
-        float* getPoles() { return poles; }
-        float getAngularFreq() { return angularFreq; }
-
-        float* applyEffect() override;
+        void applyEffect(float input, float &output) override;
         
 };
 

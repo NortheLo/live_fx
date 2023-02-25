@@ -12,7 +12,8 @@ Step 2: Create makefile and build with   ``cmake .. && make``
  - [ ] Design Main-Window with Glade
  - [ ] Implement independant in-/output device selector
 ### Filter:
- - [ ] Implement simple LP filter
+ - [x] Implement simple LP filter
+ - [ ] Verify LP implementation
 
 ## Dependencies:
 All of the dependencies should be included in your distributors repos since all of them are quite standard packages for audio and gui programs. On OpenBSD those packages should be available under x11/ and audio/.
