@@ -1,4 +1,4 @@
-#include "../lib/LowPass.hpp"
+#include "../include/LowPass.hpp"
 
 LowPass::LowPass(float wc) : wc(wc) {
             setFreq(wc);

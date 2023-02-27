@@ -1,4 +1,4 @@
-#include "../lib/AudioSystem.hpp"
+#include "../include/AudioSystem.hpp"
 
 #include <iostream>
 #include <string>

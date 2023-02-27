@@ -2,9 +2,9 @@
 #include <unistd.h> // For UNIX sleep function; deprectaded but could be useful for OpenBSD port
 #include <cmath>
 
-#include "../lib/AudioSystem.hpp"
-#include "../lib/LowPass.hpp"
-#include "../lib/Window.hpp"
+#include "../include/AudioSystem.hpp"
+#include "../include/LowPass.hpp"
+#include "../include/Window.hpp"
 
 
 int main(int argc, char *argv[]) {
