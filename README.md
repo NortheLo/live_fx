@@ -7,7 +7,7 @@ Step 2: Create makefile and build with   ``cmake .. && make``
 
 ## To-Do:
 ### Build:
- - [ ] Add CMake Flags for Release Mode with -O2/-O3 Optimization  
+ - [x] Add CMake Flags for Release Mode with -O2/-O3 Optimization  
 ### GUI: 
  - [ ] Design Main-Window with Glade
  - [ ] Implement independant in-/output device selector
@@ -19,3 +19,7 @@ Step 2: Create makefile and build with   ``cmake .. && make``
 All of the dependencies should be included in your distributors repos since all of them are quite standard packages for audio and gui programs. On OpenBSD those packages should be available under x11/ and audio/.
  - PortAudio
  - gtkmm & glibmm 
+
+ ## Latency
+ For low-latency you have to generate the Makefile with ``cmake .. -DCMAKE_BUILD_TYPE=Release``. Otherwise one will experience noticeable latency.
+ 

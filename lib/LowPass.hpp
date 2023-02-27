@@ -6,9 +6,7 @@
 class LowPass
 {
     private:
-        struct thirdButterLPTCoeff {
-        float a0, a1, a2, a3, b1, b2, b3; 
-        };
+        struct thirdButterLPTCoeff { float a0, a1, a2, a3, b1, b2, b3; };
         thirdButterLPTCoeff coeff{};
         float wc = 0.2f;
         float K, norm;
