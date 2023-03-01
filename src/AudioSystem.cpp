@@ -41,7 +41,7 @@ void AudioSystem::selDev() {
     do {
         std::cout << "Select input-device by ID number (0 will use system defaults): ";
         std::cin >> inID; 
-        std::cout << "Select outout-device by ID number (0 will use system defaults): ";
+        std::cout << "Select output-device by ID number (0 will use system defaults): ";
         std::cin >> outID;         
     } while (inID > devNum && outID > devNum);
     
@@ -117,8 +117,8 @@ int AudioSystem::audioCallback(const void *inputBuffer,
                                 unsigned long framesPerBuffer,
                                 const PaStreamCallbackTimeInfo *timeInfo,
                                 PaStreamCallbackFlags statusFlags) {
-    float* in = (float*) inputBuffer;
-    float* out = (float*) outputBuffer;
+    float* in = (float*) inputBuffer;       //Replace with C++ style cast
+    float* out = static_cast<float*>(outputBuffer);
     std::unique_lock<std::mutex> ul(mu);
     
     /* For writing the data from the microphone */
